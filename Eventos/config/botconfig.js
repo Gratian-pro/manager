@@ -1145,7 +1145,7 @@ module.exports = {
                 data = await gpanel.usersMe();
             } catch (err) {
                 return interaction.update({
-                    content: `\`❌\` Falha ao consultar a API G-Panel. Verifique a base/url e a chave.`,
+                    content: `\`❌\` Falha ao consultar a API G-Panel. Verifique sua chave da API.`,
                     embeds: [
                         new EmbedBuilder()
                             .setAuthor({ name: `${interaction.user.username} - Api G-Panel`, iconURL: interaction.user.displayAvatarURL() })
