@@ -1,0 +1,10 @@
+{
+    "sistemaMp": true,
+    "gpanel": "",
+    "mp": "",
+    "tempoPay": "10",
+    "gpanelBase": "https://beta.gratian.pro/api/v2",
+    "banksOff": [
+        "inter"
+    ]
+}
