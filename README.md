@@ -10,6 +10,9 @@
   - `npm install`
 - Configurar o token do Manager:
   - Edite `config.json` na raiz e defina:
+  - 
+    <img src="https://i.postimg.cc/0jgjmHJ0/configjson.png" width="300" height="200">
+    
     - `token`: o token do seu bot Manager
     - `owner`: o seu ID de usuário no Discord
 - Configurar a API do G-Panel:
