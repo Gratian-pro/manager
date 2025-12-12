@@ -1,6 +1,6 @@
 {
     "sistemaMp": true,
-    "gpanel": "",
+    "gpanel": "SUA_CHAVE_API",
     "mp": "",
     "tempoPay": "10",
     "gpanelBase": "https://beta.gratian.pro/api/v2",

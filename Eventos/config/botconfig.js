@@ -513,35 +513,26 @@ module.exports = {
                 .setPlaceholder(`Coloque sua API Key aqui!`)
                 .setStyle("Short")
 
-            const option2 = new TextInputBuilder()
-                .setCustomId(`baseApi`)
-                .setLabel(`QUAL A BASE DA API G-PANEL?`)
-                .setPlaceholder(`https://seu-dominio/api/v2`)
-                .setStyle("Short")
-
             const optionx1 = new ActionRowBuilder().addComponents(option1);
-            const optionx2 = new ActionRowBuilder().addComponents(option2);
 
-            modal.addComponents(optionx1, optionx2);
+            modal.addComponents(optionx1);
             await interaction.showModal(modal);
 
         };
 
         if (customId === "modalEditGPanel") {
             const keyApi = interaction.fields.getTextInputValue("keyApi");
-            const baseApi = interaction.fields.getTextInputValue("baseApi");
 
             try {
-                const baseRaw = baseApi || api.get('gpanelBase') || process.env.GPANEL_API_BASE || 'http://localhost/api/v2';
+                const baseRaw = api.get('gpanelBase') || process.env.GPANEL_API_BASE || 'https://beta.gratian.pro/api/v2';
                 const base = String(baseRaw).trim().replace(/\/+$/,'');
                 const key = String(keyApi).trim();
                 const res = await require('axios').get(`${base}/users/me`, { headers: { Authorization: `Bearer ${key}`, 'X-API-Key': key, Accept: 'application/json' } });
                 if (!res.data || res.data.success !== true) throw new Error('invalid');
                 await api.set("gpanel", key);
-                await api.set("gpanelBase", base);
                 apiConfig();
             } catch (error) {
-                const msg = `\`❌\` Falha na validação. Verifique a chave e a base da API G-Panel.`;
+                const msg = `\`❌\` Falha na validação. Verifique a chave da API G-Panel.`;
                 await interaction.reply({ content: msg, ephemeral: true });
                 try {
                     const { logs } = require('../../databases/index');
