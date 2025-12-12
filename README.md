@@ -2,7 +2,7 @@
 
 ## Requisitos
 - Node.js 18+ (recomendado LTS)
-- Token do bot no Discord (Developer Portal)
+- Token do bot no Discord [Developer Portal](https://discord.com/developers/applications)
 - [API Key do dashboard](https://beta.gratian.pro/account)
 
 ## Passo a passo
