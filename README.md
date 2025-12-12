@@ -21,7 +21,9 @@
     <img src="https://i.postimg.cc/FRG2vtFq/configurarapikey.png" width="300" height="200">
     
     - `gpanel`: sua API Key do G-Panel:
+      
       <img src="https://i.postimg.cc/nLdKB7Zs/apikey.png" width="300" height="200">
+
    
 - Iniciar o Manager:
   - `node index.js`
