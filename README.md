@@ -14,8 +14,8 @@
     - `owner`: o seu ID de usuário no Discord
 - Configurar a API do G-Panel:
   - Edite `databases/apis.json` e defina:
+    ![apis.json]([https://url-da-imagem.com/imagem.png](https://i.postimg.cc/FRG2vtFq/configurarapikey.png))
     - `gpanel`: sua API Key do G-Panel
-    - `gpanelBase`: URL base da API (ex.: `https://seu-dominio/api/v2` ou `https://beta.gratian.pro/api/v2`)
 - Iniciar o Manager:
   - `node index.js`
 
