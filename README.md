@@ -2,20 +2,29 @@
 
 ## Requisitos
 - Node.js 18+ (recomendado LTS)
-- Token do bot no Discord (Developer Portal)
-- API Key do G-Panel (Gratian) e URL base da API
+- Token do bot no Discord [Developer Portal](https://discord.com/developers/applications)
+- [API Key do dashboard](https://beta.gratian.pro/account)
 
 ## Passo a passo
 - Instalar dependências:
   - `npm install`
 - Configurar o token do Manager:
   - Edite `config.json` na raiz e defina:
+  - 
+    <img src="https://i.postimg.cc/0jgjmHJ0/configjson.png" width="300" height="200">
+    
     - `token`: o token do seu bot Manager
     - `owner`: o seu ID de usuário no Discord
 - Configurar a API do G-Panel:
   - Edite `databases/apis.json` e defina:
-    - `gpanel`: sua API Key do G-Panel
-    - `gpanelBase`: URL base da API (ex.: `https://seu-dominio/api/v2` ou `https://beta.gratian.pro/api/v2`)
+    
+    <img src="https://i.postimg.cc/FRG2vtFq/configurarapikey.png" width="300" height="200">
+    
+    - `gpanel`: sua API Key do G-Panel:
+      
+    <img src="https://i.postimg.cc/nLdKB7Zs/apikey.png" width="300" height="200">
+
+   
 - Iniciar o Manager:
   - `node index.js`
 
