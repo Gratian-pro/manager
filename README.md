@@ -3,7 +3,7 @@
 ## Requisitos
 - Node.js 18+ (recomendado LTS)
 - Token do bot no Discord (Developer Portal)
-- API Key do G-Panel (Gratian) e URL base da API
+- [API Key do dashboard](https://beta.gratian.pro/account)
 
 ## Passo a passo
 - Instalar dependências:
