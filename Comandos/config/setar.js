@@ -38,7 +38,7 @@ module.exports = {
         };
     },
     run: async (client, interaction) => {
-        if (!perms.get(`usersPerms`).includes(interaction.user.id)) {
+        if (!(perms.get(`usersPerms`) || []).includes(interaction.user.id)) {
             return interaction.reply({ content: `\`❌\` Você não tem permissão para usar este comando.`, ephemeral: true })
         };
 

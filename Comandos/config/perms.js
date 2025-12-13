@@ -15,8 +15,9 @@ module.exports = {
             });
         }
 
+        const list = perms.get("usersPerms") || [];
         let a = ""
-        perms.get("usersPerms").map((rs, index) => {
+        list.map((rs, index) => {
 
             a += `\n${index + 1}. <@${rs}>`
         })
@@ -28,9 +29,9 @@ module.exports = {
             .setFooter({ text: `${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() })
             .setTimestamp()
 
-            if (perms.get("usersPerms").length <= 0) {
+            if (list.length <= 0) {
                 embed.setDescription("- **Adicione pessoas para gerenciar o bot manager**\n\n```Ninguém está com permissão no momento, adicione alguém usando o menu abaixo!```")
-            } else if (perms.get("usersPerms").length > 0) {
+            } else if (list.length > 0) {
                 embed.setDescription(`- **Adicione pessoas para gerenciar o bot manager**\n${a}`)
             }
 
