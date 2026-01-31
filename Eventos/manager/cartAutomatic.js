@@ -112,11 +112,18 @@ module.exports = {
                     const data = paymentResponse.body;
                     const qrCode = data.point_of_interaction.transaction_data.qr_code;
                     const { qrGenerator } = require('../../Lib/QRCodeLib')
-                    const qr = new qrGenerator({ imagePath: './Lib/aaaaa.png' })
+                    const path = require('path');
+                    const imagePath = path.join(__dirname, '../../Lib/aaaaa.png');
+                    const qr = new qrGenerator({ imagePath: imagePath })
                     const qrcode = await qr.generate(qrCode)
 
-                    const buffer = Buffer.from(qrcode.response, "base64");
-                    const attachment = new AttachmentBuilder(buffer, { name: "payment.png" });
+                    let attachment = null;
+                    if (qrcode.status === 'success' && typeof qrcode.response === 'string') {
+                         const buffer = Buffer.from(qrcode.response, "base64");
+                         attachment = new AttachmentBuilder(buffer, { name: "payment.png" });
+                    } else {
+                         console.error("Erro ao gerar QR Code:", qrcode.response);
+                    }
 
                     let agora = new Date();
                     agora.setMinutes(agora.getMinutes() + Number(api.get("tempoPay")));
@@ -134,7 +141,9 @@ module.exports = {
                         .setFooter({ text: `${interaction.guild.name}`, iconURL: interaction.guild.iconURL() })
                         .setTimestamp()
 
-                    embed.setImage(`attachment://payment.png`)
+                    if (attachment) {
+                        embed.setImage(`attachment://payment.png`)
+                    }
 
                     interaction.update({
                         content: `<@${aluguel.userid}>`,
@@ -147,7 +156,7 @@ module.exports = {
                                     new ButtonBuilder().setCustomId(`${id}_${db1.get(`${interaction.channel.id}.plano`)}_cancel`).setEmoji(`1302020774709952572`).setStyle(2)
                                 )
                         ],
-                        files: [attachment]
+                        files: attachment ? [attachment] : []
                     }).then(async (msg) => {
 
                         await db1.set(`${interaction.channel.id}.copyCola`, qrCode);
